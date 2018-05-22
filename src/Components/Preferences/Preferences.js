@@ -1,9 +1,9 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import store from "../../redux/store"
 import AddItem from "./AddItem"
 import TitleUI from "./TitleUI"
 import { addLocationAction, addKeywordAction, removeKeywordAction } from "../../redux/action_creators"
+
 //Prop inputs are ___TODO___
 class Preferences extends React.Component{
   constructor(props){

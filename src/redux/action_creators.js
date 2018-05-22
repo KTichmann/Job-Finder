@@ -25,12 +25,13 @@ export const removeKeywordAction = keyword => {
   }
 }
 
-export const addPositionAction = (id, inList) => {
+export const addPositionAction = (id, inList, dateCreated) => {
   return {
     type: 'ADD-POSITION',
     payload: {
       id,
-      inList
+      inList,
+      dateCreated
     }
   }
 }

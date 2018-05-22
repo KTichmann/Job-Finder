@@ -3,8 +3,8 @@ import { combineReducers } from 'redux'
 
 let defaultState = {
   preferences: {
-    location: '',
-    keywords: []
+    location: 'New+York',
+    keywords: ['react']
   },
   positions: []
 }
@@ -18,7 +18,7 @@ const reducer = (state = defaultState, action) => {
     case 'REMOVE-KEYWORD':
       return removeKeyword(state, action.payload.keyword)
     case 'ADD-POSITION':
-      return addPosition(state, {id: action.payload.id, inList: action.payload.inList})
+      return addPosition(state, {id: action.payload.id, inList: action.payload.inList, dateCreated: action.payload.dateCreated})
     case 'REMOVE-POSITION':
       return removePosition(state, action.payload.id)
     default:
