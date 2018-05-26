@@ -18,7 +18,7 @@ class Home extends React.Component{
     this.getJobs(this.state.number)
   }
   componentDidUpdate(){
-    console.log(this.state.number, this.state.fetching)
+    //Check if the job-list is empty, and we're not currently fetching more
     if(this.state.jobList.length === 0 && !this.state.fetching){
       const keywordList = store.getState().preferences.keywords
       if(keywordList.length > this.state.number + 1){
@@ -28,7 +28,7 @@ class Home extends React.Component{
         }))
       } else{
         this.setState(() => ({
-          jobList: [{description: "no more jobs left! Add more keywords, or try again later", id:0}]
+          jobList: [{description: "no more jobs left! Add more keywords, or try again later", location: 'In your heart', type: 'Awesome'}]
         }))
       }
     }
@@ -52,8 +52,13 @@ class Home extends React.Component{
     const url = `https://jobs.github.com/positions.json?description=${keyword}&location=${location}`
     //Query the url
     fetch(url)
-      .then((res) => res.json())
       .then((res) => {
+        if(res.ok){
+          return res.json()}
+        }
+      )
+      .then((res) => {
+        //Catch 404s etc.
         const filteredRes = filterJobData(res);
         this.setState(() => {
           return {
@@ -62,6 +67,13 @@ class Home extends React.Component{
           }
         })
       })
+      .catch((err) =>{
+        console.log(err);
+        this.setState(() => {
+          jobList: [{description: "Problem fetching data, make sure you're still connected to the internet, and try again!", id:0}]
+        })
+      } 
+    )
   }
   jobDecision(ans){
     const job = this.state.jobList[this.state.jobList.length - 1]

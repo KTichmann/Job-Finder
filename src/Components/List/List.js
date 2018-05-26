@@ -1,7 +1,8 @@
 import React from 'react';
 import store from '../../redux/store';
 import ListItemHandler from './ListItemHandler';
-import FilterHandler from './FilterHandler'
+import FilterHandler from './FilterHandler';
+import SortHandler from './SortHandler';
 
 class List extends React.Component{
   constructor(props){
@@ -14,7 +15,7 @@ class List extends React.Component{
   }
   //Fetch list Items
   componentDidMount(){
-    const positions = store.getState().positions;
+    const positions = store.getState().positions.filter(obj => obj.inList);
     this.setState(() => ({ positions, view: positions }))
     console.log(positions)
   }
@@ -28,8 +29,9 @@ class List extends React.Component{
   render(){
     return(
       <div>
-        <ListItemHandler list={this.state.positions.length === 0 ? [{title: 'loading'}] : this.state.view}/>
-        <FilterHandler input={this.state.positions.filter(obj => obj.inList)} updateView={this.updateView}/>
+        <ListItemHandler list={this.state.positions.length === 0 ? [{jobObject: {title: 'Your List is Empty! Get to Swipin!'}}] : this.state.view}/>
+        <FilterHandler input={this.state.positions} updateView={this.updateView}/>
+        <SortHandler input={this.state.view} updateView={this.updateView}/>
       </div>
     )
   }

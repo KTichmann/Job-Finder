@@ -8,12 +8,12 @@ class ListItemHandler extends React.Component{
   getListData(){
     const showList = [];
     this.props.list.forEach(value => {
-      if(value.inList){
         const obj = value.jobObject;
+        console.log(obj.id)
         const listItem = <ListItem key={obj.id} jobObject={obj}/>
         showList.push(listItem)
-      }
     })
+    console.log(showList)
     return showList;
   }
   style = {

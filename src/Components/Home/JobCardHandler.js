@@ -1,18 +1,19 @@
 import React from 'react'
 import JobCard from './JobCard'
+import { Button, Segment } from 'semantic-ui-react'
 
 const JobCardHandler = (props) => {
 
   const makeJobCards = (list) => {
     if(list.length === 0){
-      return <JobCard jobObject={{description: "loading"}}/>
+      return <JobCard jobObject={{description: "loading", location: 'In your heart', type: 'Awesome'}}/>
     }
     const jobCardList = list.map(obj => <JobCard jobObject={obj} key={obj.id} zIndex={list.indexOf(obj)}/>)
      return jobCardList;
   }
   const style = {
     position: "relative",
-    width: "500px",
+    width: "400px",
     height: "90vh",
     left: "50%",
     top: "20px",
@@ -20,21 +21,19 @@ const JobCardHandler = (props) => {
   }
   const buttonStyle = {
     position: "absolute",
-    bottom: "30px",
-    width: "180px",
-    height: "30px",
-    borderRadius: "10px",
-    backgroundColor: "rgba(0, 0, 150, .5)",
-    color: "white",
-    padding: "5px",
-    border: "none",
-    outline: "none"
+    bottom: "0px",
+    width: "170px",
+    height: "50px",
+    paddingTop: "20px",
+    paddingBottom: "20px"
   }
   return(
     <div style={style}>
-      {makeJobCards(props.jobList)}
-      <button style={{...buttonStyle, left: '40px'}} onClick={() => {props.jobDecision(0)}}>No</button>
-      <button style={{...buttonStyle, right: '40px'}} onClick={() => {props.jobDecision(1)}}>Yes</button>
+      <Segment piled style={{padding: '0'}}>
+       {makeJobCards(props.jobList)}
+      </Segment>
+      <Button negative style={{...buttonStyle, left: '20px'}} onClick={() => {props.jobDecision(0)}}>No</Button>
+      <Button positive style={{...buttonStyle, right: '20px'}} onClick={() => {props.jobDecision(1)}}>Yes</Button>
     </div>
   )
 }

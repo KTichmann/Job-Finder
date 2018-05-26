@@ -4,9 +4,9 @@ import FilterUI from './FilterUI'
 const FilterHandler = (props) => {
   const handleSearch = (e) => {
     e.preventDefault();
-    const searchTerm = document.querySelector('.filterUISearchInput').value
+    const searchTerm = document.querySelector('.filterUISearchInput').value.toLowerCase()
     if(searchTerm){
-      const newView = props.input.filter((obj) => obj.jobObject.description.includes(searchTerm))
+      const newView = props.input.filter((obj) => (obj.jobObject.company.toLowerCase().includes(searchTerm) || obj.jobObject.title.toLowerCase().includes(searchTerm) || obj.jobObject.location.toLowerCase().includes(searchTerm)))
       props.updateView(newView)
     }
   }
