@@ -4,3 +4,13 @@ body {
   font-family: sans-serif;
   background-color: #4d0d227e
 }
+
+.mirrorSizing{
+  width: 400px !important;
+}
+
+.rotatedRight{
+}
+
+.rotatedLeft{
+}

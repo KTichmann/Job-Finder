@@ -2,6 +2,7 @@ import React from 'react';
 import store from '../../redux/store';
 import JobCardHandler from './JobCardHandler'
 import { addPositionAction } from '../../redux/action_creators';
+import makeCardsDraggable from './draggable';
 
 class Home extends React.Component{
   constructor(props){
@@ -15,7 +16,8 @@ class Home extends React.Component{
     this.jobDecision = this.jobDecision.bind(this)
   }
   componentDidMount(){
-    this.getJobs(this.state.number)
+    this.getJobs(this.state.number);
+    makeCardsDraggable(this.jobDecision);
   }
   componentDidUpdate(){
     //Check if the job-list is empty, and we're not currently fetching more
@@ -28,7 +30,7 @@ class Home extends React.Component{
         }))
       } else{
         this.setState(() => ({
-          jobList: [{description: "no more jobs left! Add more keywords, or try again later", location: 'In your heart', type: 'Awesome'}]
+          jobList: [{id:0, description: "no more jobs left! Add more keywords, or try again later", location: 'In your heart', type: 'Awesome', loading: true}]
         }))
       }
     }
@@ -91,7 +93,7 @@ class Home extends React.Component{
 
   render(){
     return(
-      <div>
+      <div id="home">
         <JobCardHandler position="relative" jobList={this.state.jobList} jobDecision={this.jobDecision}/>
       </div>
     )
