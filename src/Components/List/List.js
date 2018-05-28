@@ -28,10 +28,12 @@ class List extends React.Component{
   //Display List Items
   render(){
     return(
-      <div>
-        <ListItemHandler list={this.state.positions.length === 0 ? [{jobObject: {title: 'Your List is Empty! Get to Swipin!'}}] : this.state.view}/>
-        <FilterHandler input={this.state.positions} updateView={this.updateView}/>
-        <SortHandler input={this.state.view} updateView={this.updateView}/>
+      <div style={{display:'flex', justifyContent:'center', paddingTop:'50px'}}>
+        <div style={{ padding:'15px', width:'40%', backgroundColor:'#eee', borderRadius:'2%' }}>
+          <FilterHandler input={this.state.positions} updateView={this.updateView}/>
+          <SortHandler input={this.state.view} updateView={this.updateView}/>
+          <ListItemHandler list={this.state.positions.length === 0 ? [{jobObject: {title: 'Your List is Empty! Get to Swipin!'}}] : this.state.view}/>
+        </div>
       </div>
     )
   }

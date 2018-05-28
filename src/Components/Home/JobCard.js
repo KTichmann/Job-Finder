@@ -6,7 +6,8 @@ const JobCard = props => {
   const editedDescription = description.substring(0, 400).concat("...").replace(/<[^>]*>/g, " ");
   const style = {
     position: 'absolute',
-    width: "400px"
+    width: '400px',
+    height: '500px'
   }
   let className;
   if(loading){

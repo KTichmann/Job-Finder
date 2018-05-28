@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItem from './ListItem';
+import { List } from 'semantic-ui-react';
 
 class ListItemHandler extends React.Component{
   constructor(props){
@@ -17,13 +18,13 @@ class ListItemHandler extends React.Component{
     return showList;
   }
   style = {
-    width: '40vw'
+    width: 'auto'
   }
   render(){
     return(
-      <div style={this.style}>
+      <List size="big" style={this.style}>
         {this.getListData()}
-      </div>
+      </List>
     )
   }
 }

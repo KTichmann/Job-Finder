@@ -1,11 +1,13 @@
-import React from "react"
+import React from "react";
+import { Input, Button } from 'semantic-ui-react';
+
 //Prop inputs are *label*, *id* for input, and *buttonText*
 const AddItem = props => {
   return(
-    <div>
-      {props.label + ": "}
-      <input name="input" id={props.id} type="text"/>
-      <button onClick={props.clickHandler}>{props.buttonText}</button>
+    <div style={{ margin: '0px 20px' }}>
+      <div style={{fontSize: '1.5rem', display: 'inline-block', weight: '900'}}><strong>{props.label + ": "}</strong></div>
+      <Input style={{margin: '20px 20px'}} name="input" id={props.id} type="text"/>
+      <Button onClick={props.clickHandler}>{props.buttonText}</Button>
     </div>
   )
 }

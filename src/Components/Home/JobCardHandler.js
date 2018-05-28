@@ -13,7 +13,7 @@ const JobCardHandler = (props) => {
   const style = {
     position: "relative",
     width: "400px",
-    height: "90vh",
+    height: "600px",
     top: "20px",
     display: 'inline-block',
     outline: "none"

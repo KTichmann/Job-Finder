@@ -3,6 +3,7 @@ import store from "../../redux/store"
 import AddItem from "./AddItem"
 import TitleUI from "./TitleUI"
 import { addLocationAction, addKeywordAction, removeKeywordAction } from "../../redux/action_creators"
+import { Button, List, Icon } from 'semantic-ui-react'
 
 //Prop inputs are ___TODO___
 class Preferences extends React.Component{
@@ -49,21 +50,28 @@ class Preferences extends React.Component{
   }
   render(){
     return(
-      <div>
-        <TitleUI location={this.state.location} keywords={this.state.keywords.map(keyword => {
-          return (<div key={keyword} id={keyword}>
-            <p>{keyword}</p>
-          <p
-            id={keyword}
-            onClick= { (e) => {this.removeKeyword(e)}
+      <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2%'}}>
+        <div>
+          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+           <AddItem label="Location" buttonText="Change Location" id="locationInput" clickHandler={this.locationClickHandler} />
+           <AddItem label="Keyword" buttonText="Add Keyword" id="keywordInput" clickHandler={this.keywordClickHandler}/>
+          </div>
+          <TitleUI location={this.state.location} keywords={this.state.keywords.map(keyword => {
+            return (
+              <List.Item id={keyword} key={keyword} style={{ padding:'20px 40px' }}>
+                <List.Content floated='right'>
+                  <Button negative id={keyword} onClick={e => {this.removeKeyword(e)}}>Remove</Button>
+                </List.Content>
+                <Icon style={{width: '50px', paddingTop: '8px'}} name='right triangle' />
+                <List.Content style={{paddingTop: '8px'}}>
+                  <div style={{fontSize: '1.7rem'}}>{keyword.toUpperCase()}</div>
+                </List.Content>
+              </List.Item>
+            )
+            })
           }
-          >-</p>
-          </div>)
-          })
-        }
-      />
-        <AddItem label="Location" buttonText="Change Location" id="locationInput" clickHandler={this.locationClickHandler} />
-      <AddItem label="Keyword" buttonText="Add Keyword" id="keywordInput" clickHandler={this.keywordClickHandler}/>
+        />
+        </div>
       </div>
     )
   }
