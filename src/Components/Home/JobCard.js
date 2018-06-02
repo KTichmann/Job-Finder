@@ -6,8 +6,8 @@ const JobCard = props => {
   const editedDescription = description.substring(0, 400).concat("...").replace(/<[^>]*>/g, " ");
   const style = {
     position: 'absolute',
-    width: '400px',
-    height: '500px'
+    width: '100%',
+    height: '100%'
   }
   let className;
   if(loading){
@@ -15,18 +15,21 @@ const JobCard = props => {
   } else{
     className = 'jobCard'
   }
+  const cardContentStyle = {
+    margin: '8px 0'
+  }
   console.log(className)
   return(
     <div style={style}>
       <Card className={className} fluid>
-        <Image height="250px" src={company_logo} />
+        <Image height="280px" src={company_logo} />
         <Card.Content>
-          <Card.Header>{title}</Card.Header>
-          <Card.Meta>{company}</Card.Meta>
-          <Card.Description>{editedDescription}</Card.Description>
+          <Card.Header style={cardContentStyle}>{title}</Card.Header>
+          <Card.Meta style={cardContentStyle}>{company}</Card.Meta>
+          <Card.Description style={cardContentStyle}>{editedDescription}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <p style={{color: 'black'}}>{`Location: ${location} | Type: ${type}`}</p>
+          <p style={{...cardContentStyle, color: 'black'}}>{`Location: ${location} | Type: ${type}`}</p>
         </Card.Content>
       </Card>
     </div>

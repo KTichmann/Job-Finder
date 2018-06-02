@@ -12,7 +12,7 @@ const JobCardHandler = (props) => {
   }
   const style = {
     position: "relative",
-    width: "400px",
+    width: "40vw",
     height: "600px",
     top: "20px",
     display: 'inline-block',
@@ -21,10 +21,11 @@ const JobCardHandler = (props) => {
   const buttonStyle = {
     position: "absolute",
     bottom: "0px",
-    width: "170px",
+    width: "45%",
     height: "50px",
     paddingTop: "20px",
-    paddingBottom: "20px"
+    paddingBottom: "20px",
+    fontSize: '1.2rem'
   }
   const holderStyles = {
     display: "flex",
@@ -32,7 +33,7 @@ const JobCardHandler = (props) => {
     justifyContent: "space-around"
   }
   const dropBoxStyle = {
-    width: "500px",
+    width: "20vw",
     height: "700px",
     display: "inline-block",
     outline: "none"
