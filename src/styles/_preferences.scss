@@ -1,0 +1,49 @@
+#preferences{
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+    width: 75vw;
+
+    .titleUI{
+        text-align: center; 
+        margin-top: 20px;
+        font-size: 3rem;
+        font-family: sans-serif;
+    }
+
+    .addItemHolder{
+        display: flex;
+        justify-content: space-between;
+
+        .addItem{
+            margin: 0px 20px;
+
+            .label{
+                font-size: 1.5rem;
+                display: inline-block;
+                font-weight: 900;
+            }
+
+            input{
+                margin: 20px 20px !important;
+            }
+        }
+    }
+
+    .listItem{
+        padding: 20px 40px;
+
+        .listIcon{
+            width: 50px;
+            padding-top: 8px;
+        }
+
+        .listContent{
+            padding-top: 8px;
+
+            .listKeyword{
+                font-size: 1.7rem;
+            }
+        }
+    }
+}

@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import Preferences from './Components/Preferences/Preferences';
 import Home from './Components/Home/Home';
 import List from './Components/List/List';
-import NavBar from './Components/NavBar'
+import NavBar from './Components/NavBar/NavBar'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 

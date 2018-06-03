@@ -17,7 +17,6 @@ class List extends React.Component{
   componentDidMount(){
     const positions = store.getState().positions.filter(obj => obj.inList);
     this.setState(() => ({ positions, view: positions }))
-    console.log(positions)
   }
   //Update the view when searching / sorting
   updateView(newView){
@@ -28,8 +27,8 @@ class List extends React.Component{
   //Display List Items
   render(){
     return(
-      <div style={{display:'flex', flexDirection: 'row', justifyContent:'center', width: '70%', paddingTop:'50px'}}>
-        <div style={{ padding:'15px', width:'45vw', backgroundColor:'#eee', borderRadius:'2%' }}>
+      <div id="jobList">
+        <div className="jobListHolder">
           <FilterHandler input={this.state.positions} updateView={this.updateView}/>
           <SortHandler input={this.state.view} updateView={this.updateView}/>
           <ListItemHandler list={this.state.positions.length === 0 ? [{jobObject: {title: 'Your List is Empty! Get to Swipin!'}}] : this.state.view}/>

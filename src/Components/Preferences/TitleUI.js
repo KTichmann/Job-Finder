@@ -4,7 +4,7 @@ import { List } from 'semantic-ui-react'
 const TitleUI = props => {
   return(
     <div>
-      <h2 style={{ textAlign: 'center', marginTop: '20px', fontSize: '3rem', fontFamily: 'sans-serif' }}>Searching for Jobs in {props.location.replace('+', ' ')}</h2>
+      <h2 className="titleUI">Searching for Jobs in {props.location.replace('+', ' ')}</h2>
       <List divided verticalAlign='middle'>{props.keywords}</List>
     </div>
   )

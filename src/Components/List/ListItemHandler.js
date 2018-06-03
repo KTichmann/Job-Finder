@@ -10,19 +10,15 @@ class ListItemHandler extends React.Component{
     const showList = [];
     this.props.list.forEach(value => {
         const obj = value.jobObject;
-        console.log(obj.id)
         const listItem = <ListItem key={obj.id} jobObject={obj}/>
         showList.push(listItem)
     })
-    console.log(showList)
     return showList;
   }
-  style = {
-    width: 'auto'
-  }
+
   render(){
     return(
-      <List size="big" style={this.style}>
+      <List size="big" className="list">
         {this.getListData()}
       </List>
     )

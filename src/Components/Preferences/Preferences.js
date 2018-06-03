@@ -50,21 +50,21 @@ class Preferences extends React.Component{
   }
   render(){
     return(
-      <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2%'}}>
+      <div id="preferences">
         <div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="addItemHolder">
            <AddItem label="Location" buttonText="Change Location" id="locationInput" clickHandler={this.locationClickHandler} />
            <AddItem label="Keyword" buttonText="Add Keyword" id="keywordInput" clickHandler={this.keywordClickHandler}/>
           </div>
           <TitleUI location={this.state.location} keywords={this.state.keywords.map(keyword => {
             return (
-              <List.Item id={keyword} key={keyword} style={{ padding:'20px 40px' }}>
+              <List.Item id={keyword} key={keyword} className="listItem">
                 <List.Content floated='right'>
                   <Button negative id={keyword} onClick={e => {this.removeKeyword(e)}}>Remove</Button>
                 </List.Content>
-                <Icon style={{width: '50px', paddingTop: '8px'}} name='right triangle' />
-                <List.Content style={{paddingTop: '8px'}}>
-                  <div style={{fontSize: '1.7rem'}}>{keyword.toUpperCase()}</div>
+                <Icon className="listIcon" name='right triangle' />
+                <List.Content className="listContent">
+                  <div className="listKeyword">{keyword.toUpperCase()}</div>
                 </List.Content>
               </List.Item>
             )

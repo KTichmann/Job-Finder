@@ -1,0 +1,67 @@
+/* JobCardHandler Styling */
+
+#cardAndButtonHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .dropContainer-no{
+        width: 20vw;
+        height: 100vh;
+        display: inline-block;
+        outline: none;
+    }
+    .dropContainer{
+        &-yes, &-no{
+            width: 20vw;
+            height: 100vh;
+            display: inline-block;
+            outline: none;
+        }
+        &-center{
+            position: relative;
+            width: 30vw;
+            height: 650px;
+            top: 20px;
+            display: inline-block;
+            outline: none;
+            .decisionButton{
+                position: absolute;
+                bottom: 0px;
+                width: 45%;
+                height: 50px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                font-size: 1.2rem;
+
+                &-no{
+                    left: 10px;
+                }
+                &-yes{
+                    right: 10px;
+                }
+            }
+        }
+    }
+}
+
+/* Individual JobCard Components Styling */
+
+#jobCardMain{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    .cardContent{
+        margin: 8px 0;
+        &-black{
+            color: #000;
+        }
+    }
+}
+
+//For the dragging mirror
+
+.mirrorSizing{
+  width: 30vw !important;
+}

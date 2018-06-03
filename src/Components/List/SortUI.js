@@ -3,8 +3,8 @@ import { Button } from 'semantic-ui-react'
 
 const SortUI = (props) => (
     <div>
-        <Button style={{margin: '10px'}} onClick={() => props.handleSort(0)}>Sort A-Z</Button>
-        <Button style={{margin: '10px'}} onClick={() => props.handleSort(1)}>Sort Z-A</Button>
+        <Button className="sortButton" onClick={() => props.handleSort(0)}>Sort A-Z</Button>
+        <Button className="sortButton" onClick={() => props.handleSort(1)}>Sort Z-A</Button>
     </div>
 )
 
