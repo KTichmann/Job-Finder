@@ -10,6 +10,7 @@ import './App.css';
 const App = () => (
   <Router>
     <div style={{display: 'flex'}}>
+      <div className="navBarWrapper"></div>
       <NavBar />
       <Route exact path='/' component={Home} />
       <Route path='/preferences' component={Preferences} />

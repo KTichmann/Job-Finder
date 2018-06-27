@@ -10,14 +10,11 @@
         font-size: 3rem;
         font-family: sans-serif;
     }
-
     .addItemHolder{
         display: flex;
         justify-content: space-between;
-
         .addItem{
             margin: 0px 20px;
-
             .label{
                 font-size: 1.5rem;
                 display: inline-block;
