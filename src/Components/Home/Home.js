@@ -101,3 +101,10 @@ class Home extends React.Component{
 }
 
 export default Home;
+
+// SALARY
+// DESCRIPTION
+// LABEL
+// TITLE
+// LOCATION
+// COMPANY NAME

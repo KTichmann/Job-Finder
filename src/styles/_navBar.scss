@@ -1,4 +1,7 @@
 #navBar{
+    &.hidden{
+        display: none;
+    }
     background-color: #eee;
     display: flex;
     color: white;
