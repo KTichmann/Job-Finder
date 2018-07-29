@@ -1,25 +1,56 @@
 import React from 'react';
 import ListItem from './ListItem';
 import { List } from 'semantic-ui-react';
+import { removePositionAction } from '../../redux/action_creators';
+import store from "../../redux/store";
 
 class ListItemHandler extends React.Component{
   constructor(props){
-    super(props)
+    super(props);
+    this.removePosition = this.removePosition.bind(this);
   }
-  getListData(){
-    const showList = [];
+  //   // this.removeJob = this.removeJob.bind(this)
+  // }
+  // componentWillMount(){
+  //   this.updateJobList();
+  // }
+  // componentWillReceiveProps(){
+  //   this.updateJobList();
+  // }
+  // removeJob(id){
+  //   this.setState(() => {
+  //     return {
+  //       jobList: this.state.jobList.filter(item => {
+  //         if(item.props.jobObject.id === id){
+  //           console.log("check")
+  //           return false;
+  //         } else{
+  //           return true;
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
+  componentWillReceiveProps(){
+    this.updateJobList();
+  }
+  removePosition(id){
+    store.dispatch(removePositionAction(id))
+    this.props.updatePositions()
+  }
+  updateJobList(){
+    const jobList = [];
     this.props.list.forEach(value => {
         const obj = value.jobObject;
-        const listItem = <ListItem key={obj.id} jobObject={obj}/>
-        showList.push(listItem)
+        const listItem = <ListItem key={obj.id} jobObject={obj} removePosition={this.removePosition}/>
+        jobList.push(listItem);
     })
-    return showList;
+    return jobList;
   }
-
   render(){
     return(
       <List size="big" className="list">
-        {this.getListData()}
+        {this.updateJobList()}
       </List>
     )
   }

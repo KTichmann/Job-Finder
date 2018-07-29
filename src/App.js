@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import Preferences from './Components/Preferences/Preferences';
 import Home from './Components/Home/Home';
 import List from './Components/List/List';
 import NavBar from './Components/NavBar/NavBar';
 import UserAuth from './Components/UserAuth/UserAuth';
 import SignUp from './Components/UserAuth/SignUp'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import firebase from './Components/firebase'
 import './App.css';
 
@@ -36,12 +35,12 @@ class App extends React.Component{
         <Router>
           <div style={{display: 'flex'}}>
             <div className="navBarWrapper"></div>
-            <NavBar />
-            <UserAuth logout={this.logout} loggedIn={this.state.user}/>
-            <Route exact path='/sign-up' component={SignUp} />
-            <Route exact path='/' component={Home} />
-            <Route path='/preferences' component={Preferences} />
-            <Route path='/list' component={List} />
+              <NavBar />
+              <UserAuth logout={this.logout} loggedIn={this.state.user}/>
+              <Route exact path='/sign-up' component={SignUp} />
+              <Route exact path='/' component={Home} />
+              <Route path='/preferences' component={Preferences} />
+              <Route path='/list' component={List} />
           </div>
       </Router>
     )
