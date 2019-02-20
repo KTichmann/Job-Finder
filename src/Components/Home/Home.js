@@ -1,8 +1,10 @@
 import React from 'react';
 import store from '../../redux/store';
-import JobCardHandler from './JobCardHandler'
+import JobCardHandler from './JobCardHandler';
 import { addPositionAction } from '../../redux/action_creators';
-import makeCardsDraggable from './draggable';
+import indeed from 'indeed-scraper';
+
+//import makeCardsDraggable from './draggable';
 
 class Home extends React.Component{
   constructor(props){
@@ -17,7 +19,7 @@ class Home extends React.Component{
   }
   componentDidMount(){
     this.getJobs(this.state.number);
-    makeCardsDraggable(this.jobDecision);
+    //makeCardsDraggable(this.jobDecision);
   }
   componentDidUpdate(){
     //Check if the job-list is empty, and we're not currently fetching more
@@ -51,20 +53,29 @@ class Home extends React.Component{
     const location = store.getState().preferences.location
     const keyword = store.getState().preferences.keywords[num]
     //Make the url to query
-    const url = `https://jobs.github.com/positions.json?description=${keyword}&location=${location}`
+    // const url = `https://jobs.github.com/positions.json?description=${keyword}&location=${location}`
+    const queryOptions = {
+      host: 'www.indeed.com',
+      query: keyword,
+      city: location,
+      radius: '25',
+      sort: 'date',
+      limit: '50'
+    };
     //Query the url
-    fetch(url)
+    indeed.query(queryOptions)
       .then((res) => {
         if(res.ok){
           return res.json()}
         }
       )
       .then((res) => {
+        console.log(res)
         //Catch 404s etc.
-        const filteredRes = filterJobData(res);
+        //const filteredRes = filterJobData(res);
         this.setState(() => {
           return {
-            jobList: filteredRes,
+            jobList: res,
             fetching: false
           }
         })
